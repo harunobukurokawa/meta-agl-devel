@@ -29,3 +29,7 @@ IMAGE_INSTALL += " \
 VIRTUAL-RUNTIME_net_manager = "systemd"
 
 IMAGE_INSTALL:append:rcar-gen3 = " kernel-module-gles "
+
+IMAGE_INSTALL:append = " \
+    lxc-config-agl-qt-ivi \
+    "
