@@ -6,7 +6,7 @@ inherit lxc-config
 
 LXC_AUTO_START ??= "0"
 
-do_install() {
+do_install:append() {
 	install -m 0755 -d ${D}/var/lib/machines/agl-qt-ivi
 }
 
