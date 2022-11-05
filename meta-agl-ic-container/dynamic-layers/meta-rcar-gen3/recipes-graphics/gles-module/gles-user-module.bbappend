@@ -1,3 +1,13 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/${BPN}:"
+
+SRC_URI:append = " \
+    file://72-pvr-seat.rules \
+    "
+
+do_install:append() {
+	install -m 644 ${WORKDIR}/72-pvr-seat.rules ${D}${sysconfdir}/udev/rules.d/
+}
+
 RDEPENDS:${PN}:remove:aglcontainerguest = "kernel-module-gles"
 
 PACKAGES:prepend = "\
