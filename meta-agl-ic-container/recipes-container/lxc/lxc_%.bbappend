@@ -5,12 +5,11 @@ SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += " \
-    file://lxc.service \
     file://lxc-net.service \
     "
 
 do_install:append () {
-    for service in lxc.service lxc-net.service; do
+    for service in lxc-net.service; do
         install -D -m 0644 ${WORKDIR}/$service ${D}${systemd_system_unitdir}/$service
         sed -i -e 's,@LIBEXECDIR@,${libexecdir},g' ${D}${systemd_system_unitdir}/$service
     done
