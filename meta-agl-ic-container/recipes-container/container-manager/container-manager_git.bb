@@ -21,7 +21,7 @@ inherit autotools pkgconfig systemd
 EXTRA_OECONF:append = " --enable-printfdebug"
 
 SYSTEMD_PACKAGES = "${PN}"
-SYSTEMD_SERVICE_${PN} = "container-manager.service"
+SYSTEMD_SERVICE:${PN} = "container-manager.service"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 do_install:append() {
