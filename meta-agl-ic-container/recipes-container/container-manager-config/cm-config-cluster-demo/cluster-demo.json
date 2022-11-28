@@ -1,0 +1,129 @@
+{
+	"name": "cluster-demo",
+	"base": {
+		"autoboot": true,
+		"bootpriority": 1,
+		"rootfs": {
+			"path": "/opt/container/guests/cluster-demo/rootfs",
+			"filesystem":	"ext4",
+			"mode":		"rw",
+			"blockdev": [
+				"/dev/mmcblk1p2",
+				"/dev/mmcblk1p2"
+			]
+		},
+		"extradisk": [
+			{
+				"from": 	"/opt/container/guests/cluster-demo/nv",
+				"to":		"var/nonvolatile",
+				"filesystem":	"ext4",
+				"mode":		"rw",
+				"redundancy":	"failover",
+				"blockdev": [
+					"/dev/mmcblk1p9",
+					"/dev/mmcblk1p9"
+				]
+			}
+		],
+		"lifecycle": {
+			"halt": "SIGRTMIN+3",
+			"reboot": "SIGTERM"
+		},
+		"cap": {
+			"drop": "sys_module mac_admin mac_override sys_time",
+			"keep": ""
+		},
+		"environment": [
+			"HOME=/home/root"
+		]
+	},
+	"resource": [
+		{
+			"type":		"cgroup",
+			"object":	"cpuset.cpus",
+			"value":	"1"
+		}
+	],
+	"fs": {
+		"mount": [
+			{
+				"type": 	"filesystem",
+				"from": 	"shm",
+				"to":		"/dev/shm",
+				"fstype":	"tmpfs",
+				"option": 	"defaults 0 0"
+			},
+			{
+				"type": 	"filesystem",
+				"from": 	"tmpfs",
+				"to":		"run",
+				"fstype":	"tmpfs",
+				"option": 	"defaults 0 0"
+			},
+			{
+				"type": 	"directry",
+				"from": 	"/sys/kernel/security",
+				"to":		"sys/kernel/security",
+				"fstype":	"none",
+				"option": 	"ro,bind,optional 0 0"
+			},
+			{
+				"type": 	"directry",
+				"from": 	"/run/drm-lease-manager/lease-cluster",
+				"to":		"var/display/drm-lease-manager/lease",
+				"fstype":	"none",
+				"option": 	"bind,create=file"
+			},
+			{
+				"type": 	"directry",
+				"from": 	"/run/pipewire/icipc-0",
+				"to":		"var/icipc-0",
+				"fstype":	"none",
+				"option": 	"bind,optional,create=file"
+			},
+			{
+				"type": 	"directry",
+				"from": 	"/opt/container/guests/cluster-demo/system.conf",
+				"to":		"etc/systemd/system.conf.d/10-environment.conf",
+				"fstype":	"none",
+				"option": 	"bind,optional,create=file"
+			}
+		]
+	},
+	"device": {
+		"static": [
+			{
+				"type": 		"devdir",
+				"from": 		"/dev/dri",
+				"to":			"dev/dri",
+				"devnode":		"/dev/dri/card0",
+				"optional": 		0,
+				"wideallow": 	1,
+				"exclusive": 	0
+			},
+			{
+				"type": 		"devnode",
+				"from": 		"/dev/pvr_sync",
+				"to":			"dev/pvr_sync",
+				"devnode":		"/dev/pvr_sync",
+				"optional": 		0,
+				"wideallow": 	0,
+				"exclusive": 	0
+			}
+		]
+	},
+	"network": {
+		"static": [
+			{
+				"type": 	"veth",
+				"param": {
+					"name":	"veth0",
+					"link": 	"lxcbr0",
+					"flags":	"up",
+					"hwaddr":	"00:16:3e:xx:xx:xx",
+					"mode": "bridge"
+				}
+			}
+		]
+	}
+}
