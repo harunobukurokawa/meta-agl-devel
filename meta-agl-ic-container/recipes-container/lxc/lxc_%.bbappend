@@ -1,7 +1,5 @@
 PACKAGECONFIG:remove = "templates"
 
-SYSTEMD_AUTO_ENABLE:${PN} = "enable"
-
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += " \
