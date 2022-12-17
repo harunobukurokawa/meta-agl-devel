@@ -3,6 +3,7 @@ PACKAGECONFIG:remove = "templates"
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += " \
+   file://0001-Remove-container-automatic-rebooting.patch \
     file://lxc-net.service \
     "
 
