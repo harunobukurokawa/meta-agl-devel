@@ -1,4 +1,4 @@
-From 311e570bddbadc4e3c2182f776da27d87ee8e4b3 Mon Sep 17 00:00:00 2001
+From d70ec96c2703c421bff55f5d2dce8d8aa5f8819b Mon Sep 17 00:00:00 2001
 From: Damian Hobson-Garcia <dhobsong@igel.co.jp>
 Date: Tue, 12 Apr 2022 15:12:27 +0900
 Subject: [PATCH] Add drm-lease support
@@ -16,8 +16,8 @@ Signed-off-by: Naoto Yamaguchi <naoto.yamaguchi@aisin.co.jp>
  src/compositor.c     |  7 ++++++
  src/drm-lease.c      | 52 ++++++++++++++++++++++++++++++++++++++++++++
  src/drm-lease.h      | 19 ++++++++++++++++
- src/ivi-compositor.h |  3 +++
- 6 files changed, 94 insertions(+)
+ src/ivi-compositor.h |  2 ++
+ 6 files changed, 93 insertions(+)
  create mode 100644 src/drm-lease.c
  create mode 100644 src/drm-lease.h
 
@@ -188,7 +188,7 @@ index 0000000..9fdc428
 +#endif
 +#endif /* DRM_LEASE_H */
 diff --git a/src/ivi-compositor.h b/src/ivi-compositor.h
-index bf96fc7..7f53b37 100644
+index bf96fc7..fcf11bf 100644
 --- a/src/ivi-compositor.h
 +++ b/src/ivi-compositor.h
 @@ -35,6 +35,7 @@
@@ -199,15 +199,14 @@ index bf96fc7..7f53b37 100644
  
  #include "agl-shell-server-protocol.h"
  
-@@ -114,6 +115,8 @@ struct ivi_compositor {
+@@ -114,6 +115,7 @@ struct ivi_compositor {
  	struct weston_layer fullscreen;
  
  	struct wl_list child_process_list;
-+
 +	struct dlm_lease *drm_lease;
  };
  
  struct ivi_surface;
 -- 
-2.25.1
+2.35.1
 
