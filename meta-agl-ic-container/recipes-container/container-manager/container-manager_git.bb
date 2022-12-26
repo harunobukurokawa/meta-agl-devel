@@ -7,7 +7,7 @@ PV = "0.1.0+rev${SRCPV}"
 
 DEPENDS = "systemd libmnl cjson lxc util-linux"
 
-SRCREV = "a321cd0a18c0ea587cc6f5786297fb48440668ab"
+SRCREV = "8f137cc0109d0bd16dc35126a1e532ea594f5efc"
 SRC_URI = " \
     git://github.com/AGLExport/container-manager.git;branch=staging2;protocol=https \
     file://container-manager.service \
