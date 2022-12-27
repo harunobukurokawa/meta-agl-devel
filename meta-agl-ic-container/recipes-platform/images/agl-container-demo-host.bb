@@ -39,4 +39,8 @@ IMAGE_INSTALL:append = " \
     cm-config-agl-qt-ivi-demo \
     cm-config-agl-flutter-ivi-demo \
     cm-config-agl-html5-ivi-demo \
+    momiweb \
+    \
+    lighttpd lighttpd-module-cgi \
+    lighttpd-module-alias lighttpd-module-access \
     "
