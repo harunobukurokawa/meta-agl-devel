@@ -1,0 +1,1 @@
+../../../../meta-agl-demo/recipes-core/psplash/psplash_agldemo.inc
