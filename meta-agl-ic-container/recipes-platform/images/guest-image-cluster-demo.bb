@@ -9,4 +9,5 @@ IMAGE_INSTALL += " \
     weston-ini-conf-guest \
     cluster-refgui \
     pipewire-ic-ipc \
+    psplash \
 "

@@ -27,4 +27,5 @@ IMAGE_INSTALL += " \
     wireplumber \
     packagegroup-pipewire-base \
     wireplumber-policy-config-agl \
+    psplash \
 "
