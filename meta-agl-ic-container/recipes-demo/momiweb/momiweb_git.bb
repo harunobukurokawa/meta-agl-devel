@@ -7,7 +7,7 @@ PV = "0.0.0"
 
 SRC_URI = "git://github.com/agl-ic-eg/momiweb.git;protocol=https;branch=main \
           "
-SRCREV = "14cc09e8b5896e00b3d64b0e33a3723591a594d4"
+SRCREV = "305bd2bad508eaa8e65b11fb5421a880c9846c9b"
 
 S = "${WORKDIR}/git"
 
