@@ -31,7 +31,7 @@
 			"reboot": "SIGTERM"
 		},
 		"cap": {
-			"drop": "sys_module mac_admin mac_override sys_time",
+			"drop": "sys_module mac_admin mac_override",
 			"keep": ""
 		},
 		"environment": [
