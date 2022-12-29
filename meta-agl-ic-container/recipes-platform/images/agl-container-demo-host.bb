@@ -41,6 +41,7 @@ IMAGE_INSTALL:append = " \
     cm-config-agl-html5-ivi-demo \
     cm-config-agl-momi-ivi-demo \
     momiweb \
+    lxc-networking \
     \
     lighttpd lighttpd-module-cgi \
     lighttpd-module-alias lighttpd-module-access \

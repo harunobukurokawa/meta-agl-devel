@@ -1,8 +1,3 @@
 {
-	"configdir": "/opt/container/conf/",
-	"etherbridge": [
-		{
-			"name": "lxcbr0"
-		}
-	]
+	"configdir": "/opt/container/conf/"
 }
