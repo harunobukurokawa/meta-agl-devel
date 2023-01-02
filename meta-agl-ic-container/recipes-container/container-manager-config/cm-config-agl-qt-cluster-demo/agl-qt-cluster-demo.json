@@ -1,35 +1,34 @@
 {
-	"name": "agl-html5-ivi-demo",
-	"role": "ivi",
+	"name": "agl-qt-cluster-demo",
+	"role": "cluster",
 	"base": {
-		"autoboot": false,
-		"bootpriority": 10,
+		"autoboot": true,
+		"bootpriority": 1,
 		"rootfs": {
-			"path": "/opt/container/guests/agl-html5-ivi-demo/rootfs",
+			"path": "/opt/container/guests/agl-qt-cluster-demo/rootfs",
 			"filesystem":	"ext4",
 			"mode":		"rw",
 			"blockdev": [
-				"/dev/mmcblk1p6",
-				"/dev/mmcblk1p6"
+				"/dev/mmcblk1p7",
+				"/dev/mmcblk1p7"
 			]
 		},
 		"extradisk": [
 			{
-				"from": 	"/opt/container/guests/agl-html5-ivi-demo/nv",
+				"from": 	"/opt/container/guests/agl-qt-cluster-demo/nv",
 				"to":		"var/nonvolatile",
 				"filesystem":	"ext4",
 				"mode":		"rw",
 				"redundancy":	"failover",
 				"blockdev": [
-					"/dev/mmcblk1p13",
-					"/dev/mmcblk1p13"
+					"/dev/mmcblk1p14",
+					"/dev/mmcblk1p14"
 				]
 			}
 		],
 		"lifecycle": {
 			"halt": "SIGRTMIN+3",
-			"reboot": "SIGTERM",
-			"timeout": 15000
+			"reboot": "SIGTERM"
 		},
 		"cap": {
 			"drop": "sys_module mac_admin mac_override",
@@ -44,7 +43,7 @@
 		{
 			"type":		"cgroup",
 			"object":	"cpuset.cpus",
-			"value":	"0,2-3"
+			"value":	"1"
 		}
 	],
 	"fs": {
@@ -79,21 +78,14 @@
 			},
 			{
 				"type": 	"directory",
-				"from": 	"/run/drm-lease-manager/lease-ivi",
+				"from": 	"/run/drm-lease-manager/lease-cluster",
 				"to":		"var/display/drm-lease-manager/lease",
 				"fstype":	"none",
 				"option": 	"bind,create=file"
 			},
 			{
 				"type": 	"directory",
-				"from": 	"/run/pipewire/pipewire-0",
-				"to":		"var/pipewire-0",
-				"fstype":	"none",
-				"option": 	"bind,optional,create=file"
-			},
-			{
-				"type": 	"directory",
-				"from": 	"/opt/container/guests/agl-html5-ivi-demo/system.conf",
+				"from": 	"/opt/container/guests/agl-qt-cluster-demo/system.conf",
 				"to":		"etc/systemd/system.conf.d/10-environment.conf",
 				"fstype":	"none",
 				"option": 	"bind,optional,create=file"
@@ -112,15 +104,6 @@
 				"exclusive": 	0
 			},
 			{
-				"type": 		"devdir",
-				"from": 		"/dev/input",
-				"to":			"dev/input",
-				"devnode":		"/dev/input/event0",
-				"optional": 		1,
-				"wideallow": 	1,
-				"exclusive": 	0
-			},
-			{
 				"type": 		"devnode",
 				"from": 		"/dev/pvr_sync",
 				"to":			"dev/pvr_sync",
@@ -128,20 +111,6 @@
 				"optional": 		0,
 				"wideallow": 	0,
 				"exclusive": 	0
-			}
-		],
-		"dynamic": [
-			{
-				"devpath":		"/devices/platform/soc/ee0a0100.usb/usb2/",
-				"subsystem":	"block",
-				"devtype":		"disk",
-				"mode":	3
-			},
-			{
-				"devpath":		"/devices/platform/soc/ee0a0100.usb/usb2/",
-				"subsystem":	"block",
-				"devtype":		"partition",
-				"mode":	3
 			}
 		]
 	},

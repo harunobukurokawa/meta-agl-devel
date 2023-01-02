@@ -2,7 +2,7 @@
 	"name": "agl-momi-ivi-demo",
 	"role": "ivi",
 	"base": {
-		"autoboot": false,
+		"autoboot": true,
 		"bootpriority": 10,
 		"rootfs": {
 			"path": "/opt/container/guests/agl-momi-ivi-demo/rootfs",
@@ -128,15 +128,6 @@
 				"optional": 		0,
 				"wideallow": 	0,
 				"exclusive": 	0
-			},
-			{
-				"type": 		"iio",
-				"sysfrom": 		"/sys/devices/platform/soc/e66d0000.i2c/i2c-3/3-006a/iio:device0/",
-				"systo":		"sys/devices/platform/soc/e66d0000.i2c/i2c-3/3-006a/iio:device0/",
-				"devfrom": 		"/dev/iio:device0",
-				"devto":		"dev/iio:device0",
-				"devnode":		"/dev/iio:device0",
-				"optional": 	0
 			}
 		],
 		"dynamic": [

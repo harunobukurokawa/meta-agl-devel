@@ -2,7 +2,7 @@
 	"name": "cluster-demo",
 	"role": "cluster",
 	"base": {
-		"autoboot": true,
+		"autoboot": false,
 		"bootpriority": 1,
 		"rootfs": {
 			"path": "/opt/container/guests/cluster-demo/rootfs",

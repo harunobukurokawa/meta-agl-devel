@@ -36,6 +36,7 @@ IMAGE_INSTALL:append:rcar-gen3 = " kernel-module-gles "
 # demo guests
 IMAGE_INSTALL:append = " \
     cm-config-cluster-demo \
+    cm-config-agl-qt-cluster-demo \
     cm-config-agl-qt-ivi-demo \
     cm-config-agl-flutter-ivi-demo \
     cm-config-agl-html5-ivi-demo \
